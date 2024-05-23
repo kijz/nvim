@@ -208,6 +208,7 @@ local default_plugins = {
 
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     cmd = "Telescope",
     init = function()
