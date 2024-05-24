@@ -6,6 +6,14 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
+  NvDashAscii = {
+    bg = "none",
+    fg = "white",
+  },
+  NvDashButtons = {
+    bg = "none",
+    fg = "grey",
+  },
   Comment = {
     italic = true,
   },
