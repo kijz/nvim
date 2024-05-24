@@ -71,6 +71,12 @@ M.gitsigns = {
       end,
       "hunk locations",
     },
+    ["<leader>gh"] = {
+      function()
+        require("gitsigns").setloclist()
+      end,
+      "hunk locations",
+    },
   },
 }
 M.lazygit = {
