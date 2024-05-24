@@ -15,7 +15,7 @@ local servers = {
   "clangd",
   "gdscript",
   "pyright",
-  "glsl_analyzer"
+  "glsl_analyzer",
   --  "ruby_ls",
   -- "standardrb",
 }
@@ -26,6 +26,27 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+-- use clippy for rust linting
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        allFeatures = true,
+        command = "clippy",
+        extraArgs = {
+          "--",
+          "-Dclippy::correctness",
+          "-Dclippy::complexity",
+          "-Wclippy::perf",
+          "-Wclippy::pedantic",
+        },
+      },
+    },
+  },
+}
 
 -- use ruby default packed lsp
 -- CURRENTLY NOT WORKING WITH ASDF
