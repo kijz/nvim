@@ -42,6 +42,12 @@ M.dap = {
       end,
       "[d]ebug [c]ontinue",
     },
+    ["<leader>dt"] = {
+      function()
+        require("dap").terminate()
+      end,
+      "[d]ap [t]erminate",
+    },
     ["<leader>so"] = {
       function()
         require("dap").step_over()
