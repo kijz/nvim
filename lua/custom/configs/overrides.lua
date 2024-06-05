@@ -11,6 +11,7 @@ M.treesitter = {
     "tsx",
     "c",
     "cpp",
+    "go",
     "markdown",
     "markdown_inline",
     "python",
@@ -107,6 +108,8 @@ M.mdap = {
   ensure_installed = {
     -- cpp
     "codelldb",
+    -- go
+    "delve",
     -- web stuff
     "node-debug2-adapter",
   },

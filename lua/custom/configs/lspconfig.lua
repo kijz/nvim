@@ -15,6 +15,7 @@ local servers = {
   "clangd",
   "gdscript",
   "pyright",
+  "gopls",
   "glsl_analyzer",
   --  "ruby_ls",
   -- "standardrb",

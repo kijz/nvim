@@ -32,6 +32,8 @@ local plugins = {
       ensure_installed = {
         -- cpp
         "codelldb",
+        -- go
+        "delve",
       },
     },
   },

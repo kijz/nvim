@@ -37,7 +37,14 @@ local sources = {
 
   --rust 
   b.formatting.rustfmt,
-
+  --go
+  b.code_actions.impl,
+  b.code_actions.gomodifytags,
+  b.code_actions.refactoring,
+  b.diagnostics.golangci_lint,
+  b.formatting.gofumpt,
+  b.formatting.goimports,
+  b.formatting.goimports_reviser,
 
   -- yaml /github actions
   b.diagnostics.actionlint,
