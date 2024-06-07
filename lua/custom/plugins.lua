@@ -3,6 +3,18 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
   {
+    "michaelrommel/nvim-silicon",
+    lazy = true,
+    cmd = "Silicon",
+    config = function()
+      require("silicon").setup({
+        font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+        theme = "Dracula",
+        background = "#e1e1e1",
+      })
+    end
+  },
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },

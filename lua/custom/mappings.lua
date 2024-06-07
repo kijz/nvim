@@ -9,6 +9,10 @@ M.general = {
     ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
     ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
   },
+  -- screenshots
+  v = {
+    ["<leader>sc"] = { ":Silicon<CR>", "[s]napshot [c]ode"}
+  }
 }
 
 M.tabufline = {
@@ -25,8 +29,7 @@ M.tabufline = {
       end,
       "Close all buffers except current",
     },
-  },
-}
+  }, }
 
 M.dap = {
   n = {
