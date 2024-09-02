@@ -17,8 +17,8 @@ local servers = {
   "pyright",
   "gopls",
   "glsl_analyzer",
+  "standardrb",
   --  "ruby_ls",
-  -- "standardrb",
 }
 
 for _, lsp in ipairs(servers) do
@@ -50,13 +50,12 @@ lspconfig.rust_analyzer.setup {
 }
 
 -- use ruby default packed lsp
--- CURRENTLY NOT WORKING WITH ASDF
--- lspconfig.standardrb.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   cmd = { "~/.asdf/shims/standardrb", "--lsp" },
---   filetypes = { "rb", "ruby" },
--- }
+lspconfig.standardrb.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "asdf", "exec", "standardrb", "--lsp" },
+  filetypes = { "rb", "ruby" },
+}
 
 -- connect to Godot Application LSP
 local port = os.getenv "GDScript_Port" or "6005"
