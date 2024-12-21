@@ -9,15 +9,16 @@ local lspconfig = require "lspconfig"
 local servers = {
   "html",
   "cssls",
-  "tsserver",
-  "tailwindcss",
+  "ts_ls",
   "biome",
+  "tailwindcss",
   "clangd",
   "gdscript",
   "pyright",
   "gopls",
   "glsl_analyzer",
   "standardrb",
+  "arduino_language_server",
   --  "ruby_ls",
 }
 
@@ -86,4 +87,12 @@ dap.configurations.gdscript = {
     request = "launch",
     type = "godot",
   },
+}
+
+dap.configurations.javascript = {
+  type = 'node2',
+  request = 'attach',
+  name = 'Attach to Node',
+  port = 5173,   -- Matches node --inspect default port
+  processId = require('dap.utils').pick_process
 }

@@ -21,12 +21,14 @@ opt.relativenumber = true
 -- opt.softtabstop = 4
 
 -- Highlight on yank
+-- Define a custom highlight group for yanking
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#FFCCA5" })
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("highlight_yank", {}),
-  desc = "Hightlight selection on yank",
+  desc = "Highlight selection on yank",
   pattern = "*",
   callback = function()
-    vim.highlight.on_yank { higroup = "IncSearch", timeout = 200 }
+    vim.highlight.on_yank { higroup = "YankHighlight", timeout = 200 }
   end,
 })
 -- Remap C-i to ensure it works as intended
@@ -35,16 +37,6 @@ vim.api.nvim_set_keymap('n', '<C-i>', '<C-i>', { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<C-o>', '<C-o>', { noremap = true, silent = true })
 
 -- fix for kitty
--- Set guicursor option
-vim.o.guicursor = "n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
-
--- Set up autocommands
-vim.api.nvim_exec(
-  [[
-  augroup kitty_cursor
-    autocmd!
-    autocmd Colorscheme * set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
-  augroup END
-]],
-  false
-)
+-- Set guicursor option with pastel orange color
+vim.o.guicursor = "n-v-c-sm:block-Cursor/lCursor,i-ci-ve:ver25-Cursor/lCursor,r-cr-o:hor20-Cursor/lCursor"
+vim.api.nvim_set_hl(0, "Cursor", { bg = "#FFCCA5" })

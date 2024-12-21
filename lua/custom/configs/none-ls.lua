@@ -1,14 +1,15 @@
-local present, null_ls = pcall(require, "null-ls")
+local present, none_ls = pcall(require, "none-ls")
 
 if not present then
   return
 end
 
-local b = null_ls.builtins
+local b = none_ls.builtins
 
 local sources = {
   -- webdev stuff
-  b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
+  b.formatting.biome,
 
   -- typescript / javascript
   -- b.diagnostics.eslint_d,
@@ -51,7 +52,7 @@ local sources = {
   b.diagnostics.yamllint,
 }
 
-null_ls.setup {
+none_ls.setup {
   debug = true,
   sources = sources,
 }

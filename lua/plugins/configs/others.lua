@@ -1,6 +1,9 @@
 local M = {}
 local utils = require "core.utils"
 
+vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
+vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
+
 M.blankline = {
   indentLine_enabled = 1,
   filetype_exclude = {
