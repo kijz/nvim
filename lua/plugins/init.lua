@@ -131,7 +131,10 @@ local default_plugins = {
       {
         -- snippet plugin
         "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+          "saadparwaiz1/cmp_luasnip",
+        },
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         config = function(_, opts)
           require("plugins.configs.others").luasnip(opts)
@@ -153,7 +156,6 @@ local default_plugins = {
           require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
       },
-
       -- cmp sources plugins
       {
         "saadparwaiz1/cmp_luasnip",
@@ -161,6 +163,13 @@ local default_plugins = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+      },
+      -- auto close tags for HTML / React elements
+      {
+        "windwp/nvim-ts-autotag",
+        config = function(_, opts)
+          require('nvim-ts-autotag').setup(opts)
+        end
       },
     },
     opts = function()
