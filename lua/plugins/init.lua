@@ -36,7 +36,7 @@ return {
       -- this file can contain specific instructions for your project
       instructions_file = "avante.md",
       -- for example
-      provider = "grok",
+      provider = "gemini",
       providers = {
         grok = {
           __inherited_from = 'openai',
