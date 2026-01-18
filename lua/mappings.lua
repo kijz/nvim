@@ -5,6 +5,11 @@ local map = vim.keymap.set
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+-- tabs
+map("n", "<leader>tf", "<cmd>tabfirst<CR>", { desc = ":tabfirst" })
+map("n", "<leader>tl", "<cmd>tablast<CR>", { desc = ":tablast" })
+map("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = ":tabprevious" })
+map("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = ":tabnext" })
 
 -- screenshots
 map("v", "<leader>sc", ":Silicon<CR>", { desc = "[s]creenshot [c]ode"})
@@ -64,9 +69,24 @@ map("n", "<leader>gD", function()
   require("gitsigns").diffthis('~')
 end, { desc = "Git Diff All" })
 
+map("n", "<leader>sh", function()
+  require("gitsigns").stage_hunk()
+end, { desc = "Stage Hunk" })
+
+map("n", "<leader>uh", function()
+  require("gitsigns").undo_stage_hunk()
+end, { desc = "Undo stage Hunk" })
+
+map("n", "<leader>sb", function()
+  require("gitsigns").stage_buffer()
+end, { desc = "Stage Buffer" })
+
+map("n", "<leader>rb", function()
+  require("gitsigns").reset_buffer()
+end, { desc = "reset buffer" })
+
 map("n", "<leader>rh", function()
   require("gitsigns").reset_hunk()
-
 end, { desc = "Reset Hunk" })
 
 map("n", "<leader>ph", function()
@@ -84,6 +104,7 @@ end, { desc = "Previous Hunk" })
 -- Git
 -- map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
 map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
+map("n", "<leader>ggc", "<cmd>Neogit commit<CR>", { desc = "Open :Neogit" })
 
 -- LSP
 map("n", "<leader>lf", function()
