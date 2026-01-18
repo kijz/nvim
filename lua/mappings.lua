@@ -81,8 +81,9 @@ map("n", "[c", function()
   require("gitsigns").previous_hunk()
 end, { desc = "Previous Hunk" })
 
--- LazyGit
-map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
+-- Git
+-- map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
+map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
 
 -- Telescope (LSP + Git + Diagnostics + Symbols + Grep)
 map("n", "gr", function()
