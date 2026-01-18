@@ -78,12 +78,21 @@ map("n", "]c", function()
 end, { desc = "Next Hunk" })
 
 map("n", "[c", function()
-  require("gitsigns").previous_hunk()
+  require("gitsigns").prev_hunk()
 end, { desc = "Previous Hunk" })
 
 -- Git
 -- map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
 map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
+
+-- LSP
+map("n", "<leader>lf", function()
+  vim.diagnostic.open_float { border = "rounded" }
+end, { desc = "Floating diagnostic" })
+
+map({ "n", "v" }, "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end, { desc = "Code action" })
 
 -- Telescope (LSP + Git + Diagnostics + Symbols + Grep)
 map("n", "gr", function()
