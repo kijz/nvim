@@ -44,13 +44,42 @@ map("n", "<leader>dr", function()
 end, { desc = "Inspect state via DAP REPL" })
 
 -- Gitsigns
-map("n", "<leader>gq", function()
-  require("gitsigns").setloclist()
-end, { desc = "Hunk locations" })
-
 map("n", "<leader>gh", function()
   require("gitsigns").setloclist()
 end, { desc = "Hunk locations" })
+
+map("n", "<leader>gha", function()
+  require("gitsigns").setloclist('all')
+end, { desc = "Hunk locations all" })
+
+map("n", "<leader>cs", function()
+  require("gitsigns").show_commit()
+end, { desc = "Commit Show" })
+
+map("n", "<leader>gd", function()
+  require("gitsigns").diffthis()
+end, { desc = "Git Diff" })
+
+map("n", "<leader>gD", function()
+  require("gitsigns").diffthis('~')
+end, { desc = "Git Diff All" })
+
+map("n", "<leader>rh", function()
+  require("gitsigns").reset_hunk()
+
+end, { desc = "Reset Hunk" })
+
+map("n", "<leader>ph", function()
+  require("gitsigns").preview_hunk()
+end, { desc = "Preview Hunk" })
+
+map("n", "]c", function()
+  require("gitsigns").next_hunk()
+end, { desc = "Next Hunk" })
+
+map("n", "[c", function()
+  require("gitsigns").previous_hunk()
+end, { desc = "Previous Hunk" })
 
 -- LazyGit
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
