@@ -5,6 +5,18 @@ return {
     opts = require "configs.conform",
   },
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = {
+        enable = true,
+        ignore = false,
+      },
+      filters = {
+        dotfiles = false,
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
