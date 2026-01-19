@@ -48,7 +48,7 @@ return {
       -- this file can contain specific instructions for your project
       instructions_file = "AGENTS.md",
       -- for example
-      provider = "gemini-cli",
+      provider = "claude-code",
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
