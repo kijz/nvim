@@ -104,7 +104,8 @@ end, { desc = "Previous Hunk" })
 -- Git
 -- map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
 map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
-map("n", "<leader>ggc", "<cmd>Neogit commit<CR>", { desc = "Open :Neogit" })
+map("n", "<leader>ggd", "<cmd>DiffviewOpen origin/main...HEAD --imply-local<CR>", { desc = "Diff with origin/main" })
+map("n", "<leader>ggc", "<cmd>DiffviewClose<CR>", { desc = "Close diff" })
 
 -- LSP
 map("n", "<leader>lf", function()

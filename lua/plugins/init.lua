@@ -22,13 +22,42 @@ return {
       require "configs.lspconfig"
     end,
   },
-  { import = "nvchad.blink.lazyspec" },
+  -- { import = "nvchad.blink.lazyspec" },
+  {
+    'saghen/blink.cmp',
+    dependencies = {
+      "Kaiser-Yang/blink-cmp-avante",
+    },
+    opts = {
+      sources = {
+        default = { "avante", "lsp", "path", "luasnip", "buffer" },
+        providers = {
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
+            opts = {
+              -- options for blink-cmp-avante
+            },
+          },
+        },
+      },
+    },
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css"
+        "lua",
+        "vim",
+        "vimdoc",
+        "typescript",
+        "tsx",
+        "javascript",
+        "json",
+        "go",
+        "python",
+        "yaml",
+        "markdown",
       },
     },
   },
@@ -36,32 +65,31 @@ return {
     "yetone/avante.nvim",
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     -- ⚠️ must add this setting! ! !
-    build = vim.fn.has("win32") ~= 0
-        and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-        or "make",
+    build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     ---@module 'avante'
     ---@type avante.Config
     opts = {
-      -- add any opts here
-      -- this file can contain specific instructions for your project
-      instructions_file = "AGENTS.md",
-      -- for example
+      instructions_file = "CLAUDE.md",
       provider = "claude-code",
+      behaviour = {
+        support_paste_from_clipboard = true,
+      },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-      "stevearc/dressing.nvim",        -- for input provider dressing
-      "folke/snacks.nvim",             -- for input provider snacks
-      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",        -- for providers='copilot'
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "stevearc/dressing.nvim", -- for input provider dressing
+      "folke/snacks.nvim", -- for input provider snacks
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -81,7 +109,7 @@ return {
       },
       {
         -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
+        "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
         },
@@ -94,12 +122,12 @@ return {
     lazy = true,
     cmd = "Silicon",
     config = function()
-      require("silicon").setup({
+      require("silicon").setup {
         font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
         theme = "Dracula",
         background = "#e1e1e1",
-      })
-    end
+      }
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -118,13 +146,13 @@ return {
   },
   {
     "NeogitOrg/neogit",
-    lazy = true,
+    lazy = false,
     dependencies = {
-      "nvim-lua/plenary.nvim",       -- required
-      "sindrets/diffview.nvim",      -- optional - Diff integration
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
 
       "nvim-telescope/telescope.nvim", -- optional
     },
     cmd = "Neogit",
-  }
+  },
 }
