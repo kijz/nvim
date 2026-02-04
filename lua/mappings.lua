@@ -49,6 +49,8 @@ map("n", "<leader>dr", function()
 end, { desc = "Inspect state via DAP REPL" })
 
 -- Gitsigns
+map("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "Blame" })
+
 map("n", "<leader>gh", function()
   require("gitsigns").setloclist()
 end, { desc = "Hunk locations" })
@@ -56,6 +58,14 @@ end, { desc = "Hunk locations" })
 map("n", "<leader>gha", function()
   require("gitsigns").setloclist('all')
 end, { desc = "Hunk locations all" })
+
+map("n", "<leader>hb", function()
+  require("gitsigns").blame_line({ full = true })
+end, { desc = "Hunk Blame" })
+
+map("n", "<leader>hd", function()
+  require("gitsigns").diffthis()
+end, { desc = "Hunk Diff" })
 
 map("n", "<leader>cs", function()
   require("gitsigns").show_commit()
@@ -104,6 +114,7 @@ end, { desc = "Previous Hunk" })
 -- Git
 -- map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
 map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
+map("n", "<leader>ggs", "<cmd>DiffviewOpen HEAD --imply-local<CR>", { desc = "Diff HEAD / git status" })
 map("n", "<leader>ggd", "<cmd>DiffviewOpen origin/main...HEAD --imply-local<CR>", { desc = "Diff with origin/main" })
 map("n", "<leader>ggc", "<cmd>DiffviewClose<CR>", { desc = "Close diff" })
 
@@ -161,7 +172,7 @@ map("n", "<leader>ws", function()
   require("telescope.builtin").lsp_dynamic_workspace_symbols()
 end, { desc = "[w]orkspace [s]ymbols" })
 
-map("n", "fw", function()
+map("v", "fw", function()
   require("telescope.builtin").grep_string()
 end, { desc = "[f]ind [W]ord under cursor" })
 

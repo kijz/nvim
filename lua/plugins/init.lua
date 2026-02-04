@@ -5,6 +5,15 @@ return {
     opts = require "configs.conform",
   },
   {
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
+    opts = {},
+    keys = {
+      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+    },
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     opts = {
       git = {
@@ -24,7 +33,7 @@ return {
   },
   -- { import = "nvchad.blink.lazyspec" },
   {
-    'saghen/blink.cmp',
+    "saghen/blink.cmp",
     dependencies = {
       "Kaiser-Yang/blink-cmp-avante",
     },
@@ -45,21 +54,24 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "lua",
-        "vim",
-        "vimdoc",
-        "typescript",
-        "tsx",
-        "javascript",
-        "json",
-        "go",
-        "python",
-        "yaml",
-        "markdown",
-      },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
+    opts = function()
+      return require "configs.treesitter"
+    end,
+  },
+  -- Treesitter context
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
+    config = function()
+      require("treesitter-context").setup {
+        enable = true,
+        max_lines = 3,
+        trim_scope = "outer",
+      }
+    end,
   },
   {
     "yetone/avante.nvim",
