@@ -12,7 +12,7 @@ map("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = ":tabprevious" })
 map("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = ":tabnext" })
 
 -- screenshots
-map("v", "<leader>sc", ":Silicon<CR>", { desc = "[s]creenshot [c]ode"})
+map("v", "<leader>sc", ":Silicon<CR>", { desc = "[s]creenshot [c]ode" })
 
 -- Tabufline
 map("n", "<leader>xa", function()
@@ -52,15 +52,11 @@ end, { desc = "Inspect state via DAP REPL" })
 map("n", "<leader>gb", "<cmd>Gitsigns blame<CR>", { desc = "Blame" })
 
 map("n", "<leader>gh", function()
-  require("gitsigns").setloclist()
+  require("snacks").picker.git_diff {}
 end, { desc = "Hunk locations" })
 
-map("n", "<leader>gha", function()
-  require("gitsigns").setloclist('all')
-end, { desc = "Hunk locations all" })
-
 map("n", "<leader>hb", function()
-  require("gitsigns").blame_line({ full = true })
+  require("gitsigns").blame_line { full = true }
 end, { desc = "Hunk Blame" })
 
 map("n", "<leader>hd", function()
@@ -76,7 +72,7 @@ map("n", "<leader>gd", function()
 end, { desc = "Git Diff" })
 
 map("n", "<leader>gD", function()
-  require("gitsigns").diffthis('~')
+  require("gitsigns").diffthis "~"
 end, { desc = "Git Diff All" })
 
 map("n", "<leader>sh", function()
@@ -112,9 +108,9 @@ map("n", "[c", function()
 end, { desc = "Previous Hunk" })
 
 -- Git
--- map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
-map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
-map("n", "<leader>ggs", "<cmd>DiffviewOpen HEAD --imply-local<CR>", { desc = "Diff HEAD / git status" })
+map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open :LazyGit" })
+-- map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "Open :Neogit" })
+map("n", "<leader>ggs", "<cmd>DiffviewOpen --imply-local<CR>", { desc = "Diff HEAD / git status" })
 map("n", "<leader>ggd", "<cmd>DiffviewOpen origin/main...HEAD --imply-local<CR>", { desc = "Diff with origin/main" })
 map("n", "<leader>ggc", "<cmd>DiffviewClose<CR>", { desc = "Close diff" })
 
@@ -145,7 +141,7 @@ map("n", "gt", function()
 end, { desc = "[g]o [t]ype definition" })
 
 map("n", "<leader>q", function()
-  require("telescope.builtin").diagnostics({ bufnr = 0 })
+  require("telescope.builtin").diagnostics { bufnr = 0 }
 end, { desc = "Search buffer diagnostics" })
 
 map("n", "<leader>qq", function()
@@ -168,7 +164,7 @@ map("n", "<leader>fs", function()
   require("telescope.builtin").lsp_document_symbols()
 end, { desc = "[f]ind [s]ymbols" })
 
-map("n", "<leader>ws", function()
+map("n", "<leader>fsw", function()
   require("telescope.builtin").lsp_dynamic_workspace_symbols()
 end, { desc = "[w]orkspace [s]ymbols" })
 
