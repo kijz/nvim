@@ -5,15 +5,14 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
-  {
-    "linrongbin16/gitlinker.nvim",
-    cmd = "GitLink",
+  { "linrongbin16/gitlinker.nvim", cmd = "GitLink",
     opts = {},
     keys = {
       { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
       { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
     },
-  }, {
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     opts = {
       git = {
@@ -164,5 +163,12 @@ return {
       -- 'ibhagwan/fzf-lua',
       -- 'nvim_mini/mini.nvim',
     },
+  },
+  {
+    "ThePrimeagen/99",
+    lazy = false,
+    config = function()
+      require "configs.ninetynine"
+    end,
   },
 }
