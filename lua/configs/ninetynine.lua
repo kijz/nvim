@@ -78,6 +78,9 @@ end)
 vim.keymap.set("v", "<leader>9v", function()
   _99.visual()
 end)
+vim.keymap.set("v", "9v", function()
+  _99.visual()
+end)
 
 --- if you have a request you dont want to make any changes, just cancel it
 vim.keymap.set("v", "<leader>9s", function()
